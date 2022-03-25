@@ -1,0 +1,35 @@
+body {
+  background-color: black;
+  text-align: center;
+}
+
+header h1 {
+  color: aliceblue;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90vh;
+  border: 1px solid wheat;
+  margin: 0 auto;
+  .slides {
+    margin: 0 auto;
+    width: 90%;
+    height: 80%;
+    border: 1px solid;
+    object-fit: cover;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .active {
+    margin: 0 auto;
+    width: 90%;
+    height: 50px;
+    border: 1px solid wheat;
+    color: aliceblue;
+  }
+}

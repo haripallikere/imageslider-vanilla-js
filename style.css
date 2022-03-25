@@ -1,0 +1,45 @@
+body {
+  background-color: black;
+  text-align: center;
+}
+
+header h1 {
+  color: aliceblue;
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  height: 90vh;
+  border: 1px solid wheat;
+  margin: 0 auto;
+}
+
+.slider .slides {
+  margin: 0 auto;
+  width: 90%;
+  height: 80%;
+  border: 1px solid;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slider .slides img {
+  height: 100%;
+  width: 100%;
+}
+
+.slider .active {
+  margin: 0 auto;
+  width: 90%;
+  height: 50px;
+  border: 1px solid wheat;
+  color: aliceblue;
+}
+/*# sourceMappingURL=style.css.map */
