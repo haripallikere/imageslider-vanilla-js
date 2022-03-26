@@ -1,15 +1,19 @@
-// import { a } from "./images.js";
-// "./media/01.webp";
-let a = 0;
-function createImgtag() {
+let imageIndex = ["media/0.webp", "media/1.webp", "media/2.webp"];
+let nextBtn = document.querySelector(".next");
+let backBtn = document.querySelector(".previous");
+
+nextBtn.addEventListener("click", () => {
+  generateImages(1);
+});
+
+function generateImages(im = 0) {
   const slideContainer = document.querySelector(".slides");
+  if (slideContainer.hasChildNodes()) {
+    slideContainer.removeChild(slideContainer.children[0]);
+  }
   const img = document.createElement("IMG");
-  img.setAttribute("src", `./media/${a}.webp`);
+  img.setAttribute("src", `${imageIndex[im]}`);
   slideContainer.appendChild(img);
-  console.log(img);
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
-  console.log("document loaded");
-  createImgtag();
-});
+generateImages();

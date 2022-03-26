@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 body {
   background-color: black;
   text-align: center;
@@ -8,38 +9,79 @@ header h1 {
 }
 
 .slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 90%;
-  height: 90vh;
-  border: 1px solid wheat;
+  position: relative;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
 }
 
 .slider .slides {
   margin: 0 auto;
-  width: 90%;
-  height: 80%;
+  width: 600px;
+  height: 600px;
   border: 1px solid;
+  overflow: hidden;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .slider .slides img {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
+}
+
+.slider button {
+  font-size: 40px;
+  position: absolute;
+  color: whitesmoke;
+  top: 33%;
+  background-color: black;
+  border: none;
+}
+
+.slider button:hover {
+  background-color: grey;
+}
+
+.slider .previous {
+  left: 20%;
+}
+
+.slider .next {
+  right: 20%;
 }
 
 .slider .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
+  bottom: 16%;
   height: 50px;
-  border: 1px solid wheat;
-  color: aliceblue;
+}
+
+.slider .active .dots {
+  color: greenyellow;
+  margin: 8px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid greenyellow;
 }
 /*# sourceMappingURL=style.css.map */
