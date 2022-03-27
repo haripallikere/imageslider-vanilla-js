@@ -21,17 +21,14 @@ header h1 {
   height: 600px;
   border: 1px solid;
   overflow: hidden;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-  object-position: center;
   border-radius: 50%;
 }
 
 .slider .slides img {
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 100%;
-  max-width: 100%;
+  width: 100%;
 }
 
 .slider button {
