@@ -55,7 +55,7 @@ header h1 {
   right: 20%;
 }
 
-.slider .active {
+.slider .dot-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,19 +69,20 @@ header h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  margin: 0 auto;
   width: 100%;
-  bottom: 16%;
-  height: 50px;
+  height: 100px;
 }
 
-.slider .active .dots {
+.slider .dot-nav .dots {
   color: greenyellow;
   margin: 8px;
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  border: 1px solid greenyellow;
+  border: 2px solid greenyellow;
+}
+
+.active {
+  background-color: greenyellow;
 }
 /*# sourceMappingURL=style.css.map */
