@@ -20,19 +20,30 @@ header h1 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  position: relative;
   margin: 0 auto;
   width: 600px;
   height: 600px;
   border: 1px solid;
   overflow: hidden;
   border-radius: 50%;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
 }
 
-.slider .slides img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
+.slider .slides .placeholder {
+  -o-object-fit: fill;
+     object-fit: fill;
+  position: relative;
   width: 100%;
+  height: 100%;
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
 }
 
 .slider button {
@@ -98,5 +109,20 @@ header h1 {
 
 .active {
   background-color: greenyellow;
+}
+
+.picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+}
+
+.picture.loaded {
+  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */

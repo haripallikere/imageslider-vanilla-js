@@ -47,9 +47,17 @@ function generateImageTag(index = 0) {
   if (slideContainer.hasChildNodes()) {
     slideContainer.removeChild(slideContainer.children[0]);
   }
+
   const img = document.createElement("IMG");
-  img.setAttribute("src", `${imageIndex[index]}`);
+  img.setAttribute("src", `${"placeholder/32173552.jpg"}`);
+  img.setAttribute("class", "placeholder");
   slideContainer.appendChild(img);
+
+  const originalImage = new Image();
+  originalImage.src = `${imageIndex[index]}`;
+  originalImage.onload = () => originalImage.classList.add("loaded");
+  originalImage.classList.add("picture");
+  slideContainer.appendChild(originalImage);
 }
 
 //generate dot nagivation dynamically
