@@ -78,7 +78,7 @@ function dotChecked(index = select) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  generateImageTag();
+  generateImageTag(0);
   generateDotNav();
   dotChecked();
 });
