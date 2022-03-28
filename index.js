@@ -11,10 +11,11 @@ let select = 0;
 
 //dotSelect
 function dotSelect(index) {
-  dotCheck(index);
+  dotChecked(index);
   generateImageTag(index);
 }
 
+// image slide navigation logic
 function navigate(direction) {
   let index = select;
 
@@ -34,10 +35,11 @@ function navigate(direction) {
   }
 
   select = index;
-  dotCheck(select);
+  dotChecked(select);
   generateImageTag(select);
 }
 
+// Generate image tags dynamically
 function generateImageTag(index = 0) {
   const slideContainer = document.querySelector(".slides");
   if (slideContainer.hasChildNodes()) {
@@ -48,6 +50,7 @@ function generateImageTag(index = 0) {
   slideContainer.appendChild(img);
 }
 
+//generate dot nagivation dynamically
 function generateDotNav() {
   let dotNav = document.querySelector(".dot-nav");
   imageIndex.map((element, i) => {
@@ -59,7 +62,7 @@ function generateDotNav() {
   });
 }
 
-function dotCheck(index = select) {
+function dotChecked(index = select) {
   let checkParent = document.querySelector(".dot-nav");
   let check = document.getElementById(`${index}`);
   let length = checkParent.children.length;
@@ -67,7 +70,6 @@ function dotCheck(index = select) {
   for (let i = 0; i < length; i++) {
     checkParent.children[i].classList.remove("active");
   }
-
   check.classList.add("active");
   generateImageTag(index);
   select = index;
@@ -76,5 +78,5 @@ function dotCheck(index = select) {
 document.addEventListener("DOMContentLoaded", () => {
   generateImageTag();
   generateDotNav();
-  dotCheck();
+  dotChecked();
 });
