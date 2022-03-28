@@ -6,43 +6,45 @@ let imageIndex = [
   "media/ben-sweet-2LowviVHZ-E-unsplash.jpg",
 ];
 
-let navigate = slideImages();
+//initialize
+let select = 0;
 
-function dotSelect(f) {
-  generateImageTag(f);
-  dotCheck(f);
+//dotSelect
+function dotSelect(index) {
+  dotCheck(index);
+  generateImageTag(index);
 }
 
-function slideImages() {
-  let flag = 0;
-  //logic for slides
-  return (input) => {
-    if (input < 0) {
-      if (flag === 0) {
-        flag = imageIndex.length - 1;
-      } else {
-        flag -= 1;
-      }
+function navigate(direction) {
+  let index = select;
+
+  if (direction < 0) {
+    if (index === 0) {
+      index = imageIndex.length - 1;
+    } else {
+      index -= 1;
     }
-    if (input > 0) {
-      if (flag === imageIndex.length - 1) {
-        flag = 0;
-      } else {
-        flag += 1;
-      }
+  }
+  if (direction > 0) {
+    if (index === imageIndex.length - 1) {
+      index = 0;
+    } else {
+      index += 1;
     }
-    generateImageTag(flag);
-    dotCheck(flag);
-  };
+  }
+
+  select = index;
+  dotCheck(select);
+  generateImageTag(select);
 }
 
-function generateImageTag(input = 0) {
+function generateImageTag(index = 0) {
   const slideContainer = document.querySelector(".slides");
   if (slideContainer.hasChildNodes()) {
     slideContainer.removeChild(slideContainer.children[0]);
   }
   const img = document.createElement("IMG");
-  img.setAttribute("src", `${imageIndex[input]}`);
+  img.setAttribute("src", `${imageIndex[index]}`);
   slideContainer.appendChild(img);
 }
 
@@ -57,21 +59,22 @@ function generateDotNav() {
   });
 }
 
-function dotCheck(value) {
+function dotCheck(index = select) {
   let checkParent = document.querySelector(".dot-nav");
-  let check = document.getElementById(`${value}`);
+  let check = document.getElementById(`${index}`);
   let length = checkParent.children.length;
 
   for (let i = 0; i < length; i++) {
-    if (checkParent.children[i].classList.contains("active")) {
-      checkParent.children[i].classList.remove("active");
-    }
+    checkParent.children[i].classList.remove("active");
   }
+
   check.classList.add("active");
+  generateImageTag(index);
+  select = index;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   generateImageTag();
   generateDotNav();
-  dotCheck(0);
+  dotCheck();
 });

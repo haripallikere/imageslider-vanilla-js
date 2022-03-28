@@ -12,19 +12,16 @@ header h1 {
 .slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   margin: 0 auto;
   .slides {
+    user-select: none;
     margin: 0 auto;
     width: 600px;
     height: 600px;
     border: 1px solid;
     overflow: hidden;
-    // object-fit: cover;
-    // object-position: center;
-    // object-position: center;
     border-radius: 50%;
-
     img {
       object-fit: cover;
       height: 100%;
@@ -32,12 +29,19 @@ header h1 {
     }
   }
   button {
-    font-size: 40px;
+    height: 70px;
+    width: 70px;
     position: absolute;
     color: whitesmoke;
     top: 33%;
+    border-radius: 50%;
     background-color: black;
     border: none;
+    transition: 0.3s ease;
+
+    i {
+      font-size: 50px;
+    }
   }
   button:hover {
     background-color: grey;
@@ -62,6 +66,10 @@ header h1 {
       width: 20px;
       border-radius: 50%;
       border: 2px solid greenyellow;
+      cursor: pointer;
+    }
+    .dots:hover {
+      background-color: green;
     }
   }
 }
