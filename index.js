@@ -1,3 +1,5 @@
+//code review
+
 let imageIndex = [
   "media/0.webp",
   "media/1.webp",
@@ -76,7 +78,7 @@ function dotChecked(index = select) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  generateImageTag();
+  generateImageTag(0);
   generateDotNav();
   dotChecked();
 });
