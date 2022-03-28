@@ -1,3 +1,5 @@
+//code review
+
 let imageIndex = [
   "media/0.webp",
   "media/1.webp",
