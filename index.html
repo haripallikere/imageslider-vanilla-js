@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script src="index.js" defer></script>
     <title>Image-Slider</title>
   </head>
   <body>
@@ -16,7 +17,7 @@
       <h1>Image-Slider</h1>
     </header>
     <section class="slider">
-      <div class="slides"></div>
+      <div class="slider__container"></div>
       <button class="btn previous" onclick="navigate(-1)">
         <i class="bi bi-arrow-left-circle"></i>
       </button>
@@ -25,6 +26,6 @@
       </button>
       <div class="dot-nav"></div>
     </section>
-    <script src="index.js" defer></script>
+    <button onclick="loaded()"></button>
   </body>
 </html>

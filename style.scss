@@ -1,94 +1,53 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
 body {
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  // background-color:
   text-align: center;
+  height: 100vh;
 }
 
 header h1 {
+  margin-top: 20px;
   color: aliceblue;
 }
 
-.slider {
+.slider__container {
   position: relative;
-  margin: 0 auto;
-  .slides {
-    user-select: none;
-    position: relative;
-    margin: 0 auto;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    border: 1px solid;
-    overflow: hidden;
-    .placeholder {
-      object-fit: fill;
-      position: relative;
-      width: 100%;
-      height: 100%;
-      filter: blur(20px);
-      image-rendering: pixelated;
-    }
-  }
-  button {
-    height: 70px;
-    width: 70px;
-    position: absolute;
-    color: whitesmoke;
-    top: 33%;
-    border-radius: 50%;
-    background-color: black;
-    border: none;
-    transition: 0.3s ease;
-
-    i {
-      font-size: 50px;
-    }
-  }
-  button:hover {
-    background-color: grey;
-  }
-  .previous {
-    left: 20%;
-  }
-  .next {
-    right: 20%;
-  }
-  .dot-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    .dots {
-      color: greenyellow;
-      margin: 8px;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      border: 2px solid greenyellow;
-      cursor: pointer;
-    }
-    .dots:hover {
-      background-color: green;
-    }
-  }
+  max-height: 600px;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  // position: relative;
+  // object-fit: cover;
 }
-
-.active {
-  background-color: greenyellow;
-}
-
-.picture {
+.slider__container.slides {
+  display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 0.2s linear;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+
+  // height: 100%;
+  // overflow: hidden;
+  // height: 100%;
+  // display: block;
 }
-.picture.loaded {
-  opacity: 1;
+
+.dot-nav {
+  display: flex;
+  width: 80%;
+  height: 100px;
+  justify-content: center;
+  margin: auto;
+}
+
+.dot-nav > div {
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
 }

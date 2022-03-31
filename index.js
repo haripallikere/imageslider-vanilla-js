@@ -1,5 +1,4 @@
 //code review
-
 let imageIndex = [
   "media/0.webp",
   "media/1.webp",
@@ -7,86 +6,57 @@ let imageIndex = [
   "media/lachlan-dempsey-6VPEOdpFNAs-unsplash.jpg",
   "media/ben-sweet-2LowviVHZ-E-unsplash.jpg",
 ];
-
-//initialize
-let select = 0;
-
-//dotSelect
-function dotSelect(index) {
-  dotChecked(index);
-  generateImageTag(index);
-}
-
-// image slide navigation logic
-function navigate(direction) {
-  let index = select;
-
-  if (direction < 0) {
-    if (index === 0) {
-      index = imageIndex.length - 1;
-    } else {
-      index -= 1;
-    }
-  }
-  if (direction > 0) {
-    if (index === imageIndex.length - 1) {
-      index = 0;
-    } else {
-      index += 1;
-    }
+class Imageslider {
+  constructor(currentImage, imageIndex) {
+    this.currentImage = currentImage;
+    this.imageIndex = imageIndex;
   }
 
-  select = index;
-  dotChecked(select);
-  generateImageTag(select);
-}
-
-// Generate image tags dynamically
-function generateImageTag(index = 0) {
-  const slideContainer = document.querySelector(".slides");
-  if (slideContainer.hasChildNodes()) {
-    slideContainer.removeChild(slideContainer.children[0]);
+  generateImages() {
+    this.imageIndex.map((v, i) => {
+      const img = document.createElement("img");
+      img.setAttribute("class", "slides");
+      img.setAttribute("id", `${i}`);
+      img.src = `${v}`;
+      this.currentImage.appendChild(img);
+    });
   }
 
-  const img = document.createElement("IMG");
-  img.setAttribute("src", `${"placeholder/32173552.jpg"}`);
-  img.setAttribute("class", "placeholder");
-  slideContainer.appendChild(img);
-
-  const originalImage = new Image();
-  originalImage.src = `${imageIndex[index]}`;
-  originalImage.onload = () => originalImage.classList.add("loaded");
-  originalImage.classList.add("picture");
-  slideContainer.appendChild(originalImage);
-}
-
-//generate dot nagivation dynamically
-function generateDotNav() {
-  let dotNav = document.querySelector(".dot-nav");
-  imageIndex.map((element, i) => {
-    const dot = document.createElement("div");
-    dot.setAttribute("class", "dots");
-    dot.setAttribute("id", `${i}`);
-    dot.setAttribute("onclick", `dotSelect(${i})`);
-    return dotNav.appendChild(dot);
-  });
-}
-
-function dotChecked(index = select) {
-  let checkParent = document.querySelector(".dot-nav");
-  let check = document.getElementById(`${index}`);
-  let length = checkParent.children.length;
-
-  for (let i = 0; i < length; i++) {
-    checkParent.children[i].classList.remove("active");
+  imageSlides() {
+    let a = this.currentImage.children;
+    console.log(Array.from(a), "d");
   }
-  check.classList.add("active");
-  generateImageTag(index);
-  select = index;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  generateImageTag(0);
-  generateDotNav();
-  dotChecked();
-});
+//links to images
+// selectors
+const track = document.querySelector(".slider__container");
+const dotNav = document.querySelector(".dot-nav");
+
+const slider = new Imageslider(track, imageIndex);
+
+slider.generateImages();
+console.log(slider.imageSlides());
+
+// function generateImages() {
+//   imageIndex.map((v, i) => {
+//     const img = document.createElement("img");
+//     img.setAttribute("class", "slides");
+//     img.setAttribute("id", `${i}`);
+//     img.src = `${v}`;
+//     return track.appendChild(img);
+//   });
+//   images = Array.from(track.children);
+//   console.log(images);
+// }
+
+// function generateNavBar() {
+//   imageIndex.forEach((v, i) => {
+//     const dot = document.createElement("DIV");
+//     dot.setAttribute("id", `${i}`);
+//     return dotNav.appendChild(dot);
+//   });
+// }
+
+// generateImages();
+// generateNavBar();

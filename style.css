@@ -1,124 +1,51 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 body {
-  background-color: black;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  height: 100vh;
 }
 
 header h1 {
+  margin-top: 20px;
   color: aliceblue;
 }
 
-.slider {
+.slider__container {
   position: relative;
-  margin: 0 auto;
-}
-
-.slider .slides {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  position: relative;
-  margin: 0 auto;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 1px solid;
+  max-height: 600px;
+  width: 80%;
+  margin: auto;
   overflow: hidden;
 }
 
-.slider .slides .placeholder {
-  -o-object-fit: fill;
-     object-fit: fill;
-  position: relative;
+.slider__container.slides {
+  display: block;
+  position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-filter: blur(20px);
-          filter: blur(20px);
-  -ms-interpolation-mode: nearest-neighbor;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: -o-pixelated;
-      image-rendering: pixelated;
+  top: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.slider button {
-  height: 70px;
-  width: 70px;
-  position: absolute;
-  color: whitesmoke;
-  top: 33%;
-  border-radius: 50%;
-  background-color: black;
-  border: none;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-
-.slider button i {
-  font-size: 50px;
-}
-
-.slider button:hover {
-  background-color: grey;
-}
-
-.slider .previous {
-  left: 20%;
-}
-
-.slider .next {
-  right: 20%;
-}
-
-.slider .dot-nav {
+.dot-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  width: 80%;
+  height: 100px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100px;
+  margin: auto;
 }
 
-.slider .dot-nav .dots {
-  color: greenyellow;
-  margin: 8px;
+.dot-nav > div {
   height: 20px;
   width: 20px;
+  border: 1px solid white;
   border-radius: 50%;
-  border: 2px solid greenyellow;
-  cursor: pointer;
-}
-
-.slider .dot-nav .dots:hover {
-  background-color: green;
-}
-
-.active {
-  background-color: greenyellow;
-}
-
-.picture {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear;
-}
-
-.picture.loaded {
-  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
