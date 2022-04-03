@@ -6,57 +6,110 @@ let imageIndex = [
   "media/lachlan-dempsey-6VPEOdpFNAs-unsplash.jpg",
   "media/ben-sweet-2LowviVHZ-E-unsplash.jpg",
 ];
+
+// selectors
+const track = document.querySelector(".slider__container");
+const dotNav = document.querySelector(".dot-nav");
+const nextButton = document.querySelector(".next");
+const previousButton = document.querySelector(".previous");
+
 class Imageslider {
-  constructor(currentImage, imageIndex) {
-    this.currentImage = currentImage;
+  constructor(imageNode, imageIndex, navBar) {
+    this.imageNode = imageNode;
     this.imageIndex = imageIndex;
+    this.navBar = navBar;
+    this.state = 0;
   }
 
-  generateImages() {
-    this.imageIndex.map((v, i) => {
+  generateDotNav() {
+    const len = this.imageNode.children.length;
+    for (let i = 0; i < len; i++) {
+      const dot = document.createElement("div");
+      dot.setAttribute("class", "dot");
+      dot.setAttribute("id", `${i}`);
+      this.navBar.appendChild(dot);
+    }
+  }
+
+  generateImgElement() {
+    this.imageIndex.map((ele, i) => {
+      const div = document.createElement("div");
+      div.setAttribute("class", "slide");
       const img = document.createElement("img");
-      img.setAttribute("class", "slides");
-      img.setAttribute("id", `${i}`);
-      img.src = `${v}`;
-      this.currentImage.appendChild(img);
+      img.src = `${ele}`;
+      div.appendChild(img);
+      this.imageNode.appendChild(div);
     });
   }
 
   imageSlides() {
-    let a = this.currentImage.children;
-    console.log(Array.from(a), "d");
+    let slides = Array.from(this.imageNode.children);
+    const slideWidth = slides[0].clientWidth;
+    slides.forEach((slide, i) => {
+      slide.style.left = slideWidth * i + "px";
+    });
+  }
+
+  nextImage() {
+    this.state += 1;
+    let size = this.imageNode.children[0].clientWidth;
+    let length = this.imageNode.children.length;
+    if (this.state === length) {
+      this.state = 0;
+      this.imageNode.style.transition = "none";
+    } else {
+      this.imageNode.style.transition = "transform .6s ease-in-out";
+    }
+    this.imageNode.style.transform = "translateX(" + -size * this.state + "px)";
+  }
+
+  previousImage() {
+    this.state -= 1;
+    let size = this.imageNode.children[0].clientWidth;
+    let length = this.imageNode.children.length;
+    if (this.state < 0) {
+      this.state = length - 1;
+      this.imageNode.style.transition = "none";
+    } else {
+      this.imageNode.style.transition = "transform .6s ease-in-out";
+    }
+    this.imageNode.style.transform = "translateX(" + -size * this.state + "px)";
+  }
+
+  dotNavigation() {
+    let size = this.imageNode.children[0].clientWidth;
+    const element = Array.from(this.navBar.children);
+    this.imageNode.style.transform = "translateX(" + -size * this.state + "px)";
+    element.forEach((ele) => {
+      ele.style.background = "none";
+    });
+    this.imageNode.style.transition = "transform .6s ease-in-out";
+    element[this.state].style.background = "white";
   }
 }
 
-//links to images
-// selectors
-const track = document.querySelector(".slider__container");
-const dotNav = document.querySelector(".dot-nav");
+// instance of
+const slider = new Imageslider(track, imageIndex, dotNav);
 
-const slider = new Imageslider(track, imageIndex);
+slider.generateImgElement();
+slider.imageSlides();
+slider.generateDotNav();
+slider.dotNavigation();
 
-slider.generateImages();
-console.log(slider.imageSlides());
+// Event listeners
+nextButton.addEventListener("click", () => {
+  slider.nextImage();
+  slider.dotNavigation();
+});
 
-// function generateImages() {
-//   imageIndex.map((v, i) => {
-//     const img = document.createElement("img");
-//     img.setAttribute("class", "slides");
-//     img.setAttribute("id", `${i}`);
-//     img.src = `${v}`;
-//     return track.appendChild(img);
-//   });
-//   images = Array.from(track.children);
-//   console.log(images);
-// }
+previousButton.addEventListener("click", () => {
+  slider.previousImage();
+  slider.dotNavigation();
+});
 
-// function generateNavBar() {
-//   imageIndex.forEach((v, i) => {
-//     const dot = document.createElement("DIV");
-//     dot.setAttribute("id", `${i}`);
-//     return dotNav.appendChild(dot);
-//   });
-// }
-
-// generateImages();
-// generateNavBar();
+Array.from(dotNav.children).forEach((ele) => {
+  ele.addEventListener("click", (e) => {
+    slider.state = Number(e.target.id);
+    slider.dotNavigation();
+  });
+});
