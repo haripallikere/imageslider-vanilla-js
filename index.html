@@ -9,22 +9,23 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script src="index.js" defer></script>
     <title>Image-Slider</title>
   </head>
   <body>
     <header>
       <h1>Image-Slider</h1>
     </header>
+
     <section class="slider">
-      <div class="slides"></div>
-      <button class="btn previous" onclick="navigate(-1)">
+      <div class="slider__container"></div>
+      <button class="btn previous">
         <i class="bi bi-arrow-left-circle"></i>
       </button>
-      <button class="btn next" onclick="navigate(1)">
+      <button class="btn next">
         <i class="bi bi-arrow-right-circle"></i>
       </button>
-      <div class="dot-nav"></div>
     </section>
-    <script src="index.js" defer></script>
+    <div class="dot-nav"></div>
   </body>
 </html>
