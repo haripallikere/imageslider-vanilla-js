@@ -1,10 +1,10 @@
 //code review
 let imageIndex = [
-  "media/0.webp",
-  "media/1.webp",
-  "media/2.webp",
-  "media/lachlan-dempsey-6VPEOdpFNAs-unsplash.jpg",
-  "media/ben-sweet-2LowviVHZ-E-unsplash.jpg",
+  "media/1.jpg",
+  "media/2.jpg",
+  "media/3.jpg",
+  "media/4.jpg",
+  "media/5.jpg",
 ];
 
 // selectors
@@ -37,6 +37,7 @@ class Imageslider {
       div.setAttribute("class", "slide");
       const img = document.createElement("img");
       img.src = `${ele}`;
+      img.setAttribute("id", `${i}`);
       div.appendChild(img);
       this.imageNode.appendChild(div);
     });
@@ -51,27 +52,40 @@ class Imageslider {
   }
 
   nextImage() {
+    let count = 0;
+    count += 1;
     this.state += 1;
     let size = this.imageNode.children[0].clientWidth;
     let length = this.imageNode.children.length;
+    if (this.imageNode.children[0].style.animation) {
+      this.imageNode.children[0].style.animation = "none";
+    }
     if (this.state === length) {
       this.state = 0;
       this.imageNode.style.transition = "none";
+      this.imageNode.children[this.state].style.animation = `first .4s`;
     } else {
-      this.imageNode.style.transition = "transform .6s ease-in-out";
+      this.imageNode.style.transition = "transform .3s linear";
     }
+
     this.imageNode.style.transform = "translateX(" + -size * this.state + "px)";
   }
 
   previousImage() {
+    let count = 0;
+    count += 1;
     this.state -= 1;
     let size = this.imageNode.children[0].clientWidth;
     let length = this.imageNode.children.length;
+    if (this.imageNode.children[length - 1].style.animation) {
+      this.imageNode.children[length - 1].style.animation = "none";
+    }
     if (this.state < 0) {
       this.state = length - 1;
       this.imageNode.style.transition = "none";
+      this.imageNode.children[this.state].style.animation = `last .4s`;
     } else {
-      this.imageNode.style.transition = "transform .6s ease-in-out";
+      this.imageNode.style.transition = "transform .3s linear";
     }
     this.imageNode.style.transform = "translateX(" + -size * this.state + "px)";
   }
@@ -83,7 +97,7 @@ class Imageslider {
     element.forEach((ele) => {
       ele.style.background = "none";
     });
-    this.imageNode.style.transition = "transform .6s ease-in-out";
+    this.imageNode.style.transition = "transform .4s ease-in-out";
     element[this.state].style.background = "white";
   }
 }
@@ -107,6 +121,7 @@ previousButton.addEventListener("click", () => {
   slider.dotNavigation();
 });
 
+// dotnav event listeners
 Array.from(dotNav.children).forEach((ele) => {
   ele.addEventListener("click", (e) => {
     slider.state = Number(e.target.id);

@@ -1,4 +1,10 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
   margin: 0;
@@ -87,11 +93,31 @@ i {
   left: 150px;
 }
 
-@keyframes mymove {
+// .slide img {
+//   position: absolute;
+//   height: auto;
+//   width: 100%;
+//   animation: "mymove 1s";
+// }
+
+@keyframes first {
   from {
-    right: 0px;
+    left: 900px;
   }
+
   to {
-    left: 0px;
+    right: 0;
   }
+
+}
+
+@keyframes last {
+  from {
+    left: 0;
+  }
+
+  to {
+    right: -900px;
+  }
+  
 }

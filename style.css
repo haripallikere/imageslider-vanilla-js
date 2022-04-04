@@ -1,4 +1,11 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -97,21 +104,39 @@ i {
   left: 150px;
 }
 
-@-webkit-keyframes mymove {
+@-webkit-keyframes first {
   from {
-    right: 0px;
+    left: 900px;
   }
   to {
-    left: 0px;
+    right: 0;
   }
 }
 
-@keyframes mymove {
+@keyframes first {
   from {
-    right: 0px;
+    left: 900px;
   }
   to {
-    left: 0px;
+    right: 0;
+  }
+}
+
+@-webkit-keyframes last {
+  from {
+    left: 0;
+  }
+  to {
+    right: -900px;
+  }
+}
+
+@keyframes last {
+  from {
+    left: 0;
+  }
+  to {
+    right: -900px;
   }
 }
 /*# sourceMappingURL=style.css.map */
